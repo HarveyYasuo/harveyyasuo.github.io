@@ -1,3 +1,4 @@
+google.com, pub-7408875684074602, DIRECT, f08c47fec0942fa0
 pokkt.com, 6246, RESELLER, c45702d9311e25fd
 pubnative.net, 1009966, RESELLER, d641df8625486a7b
 pubnative.net, 1009458, RESELLER, d641df8625486a7b
