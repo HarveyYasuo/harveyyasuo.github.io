@@ -1,8 +1,4 @@
-User-agent: Google-adstxt
-Disallow:
-
-User-agent: Mediapartners-Google
-Disallow:
-
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://harveyyasuo.github.io/sitemap.xml
