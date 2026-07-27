@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contenido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-slideDown {
+            animation: slideDown 0.6s ease-out;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .animate-slideUp {
+            animation: slideUp 0.5s ease-out;
+        }
+        .animate-shake {
+            animation: shake 0.3s ease-in-out;
+        }
+        .animate-bounce {
+            animation: bounce 0.5s ease-in-out infinite;
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 p-4 md:p-8">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8 animate-slideDown">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg">
+                Agregar Contenido
+            </h1>
+            <p class="text-indigo-200 text-lg">
+                Comparte tus juegos y programas favoritos
+            </p>
+        </div>
+
+
+
+
+
+        <!-- Form Card -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-6 md:p-8 border border-white/20 animate-fadeIn">
+            <div class="space-y-6">
+                
+                <!-- Título -->
+                <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                    <label class="flex items-center gap-2 text-white font-semibold mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-300">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        Título
+                    </label>
+                    <input
+                        type="text"
+                        id="titulo"
+                        class="w-full px-4 py-3 rounded-lg bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 transition-all duration-300"
+                        placeholder="Ej: Minecraft, Visual Studio Code"
+                    />
+                    <p id="error-titulo" class="text-red-300 text-sm mt-1 hidden"></p>
+                </div>
+
+                <!-- Descripción -->
+                <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                    <label class="flex items-center gap-2 text-white font-semibold mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-300">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        Descripción
+                    </label>
+                    <textarea
+                        id="descripcion"
+                        rows="4"
+                        class="w-full px-4 py-3 rounded-lg bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 transition-all duration-300 resize-none"
+                        placeholder="Describe el contenido, características principales..."
+                    ></textarea>
+                    <p id="error-descripcion" class="text-red-300 text-sm mt-1 hidden"></p>
+                </div>
+
+                <!-- Enlace del Sitio -->
+                <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                    <label class="flex items-center gap-2 text-white font-semibold mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-300">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Enlace del Sitio
+                    </label>
+                    <input
+                        type="url"
+                        id="enlace_sitio"
+                        class="w-full px-4 py-3 rounded-lg bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 transition-all duration-300"
+                        placeholder="https://ejemplo.com/descarga"
+                    />
+                    <p id="error-enlace_sitio" class="text-red-300 text-sm mt-1 hidden"></p>
+                </div>
+
+                <!-- Enlace de Imagen -->
+                <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                    <label class="flex items-center gap-2 text-white font-semibold mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-300">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        Enlace de Imagen
+                    </label>
+                    <input
+                        type="url"
+                        id="enlace_imagen"
+                        class="w-full px-4 py-3 rounded-lg bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 transition-all duration-300"
+                        placeholder="https://ejemplo.com/imagen.jpg"
+                    />
+                    <p id="error-enlace_imagen" class="text-red-300 text-sm mt-1 hidden"></p>
+                </div>
+
+                <!-- Enlace de Video -->
+                <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                    <label class="flex items-center gap-2 text-white font-semibold mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-300">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Enlace de Video
+                    </label>
+                    <input
+                        type="url"
+                        id="enlace_video"
+                        class="w-full px-4 py-3 rounded-lg bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 transition-all duration-300"
+                        placeholder="https://...mp4, .webm"
+                    />
+                    <p id="error-enlace_video" class="text-red-300 text-sm mt-1 hidden"></p>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="button"
+                    id="btn-submit"
+                    class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl !mt-10"
+                >
+                    Agregar Contenido
+                </button>
+            </div>
+
+            <!-- Success Message -->
+            <div id="success-message" class="mt-6 p-4 bg-green-500/20 border-2 border-green-400 rounded-xl hidden">
+                <p class="text-green-200 text-center font-semibold flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <span>¡Contenido agregado exitosamente!</span>
+                </p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="mt-6 p-4 bg-red-500/20 border-2 border-red-400 rounded-xl hidden">
+                <p class="text-red-200 text-center font-semibold" id="error-text"></p>
+            </div>
+        </div>
+
+        <!-- Preview Card -->
+        <div id="preview-card" class="mt-8 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-6 border border-white/20 hidden">
+            <h3 class="text-white font-bold text-xl mb-4">Vista Previa</h3>
+            <div class="bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div id="preview-icon" class="p-3 rounded-lg bg-cyan-500/30">
+                        <!-- SVG Icon will be inserted here by JS -->
+                    </div>
+                    <div class="flex-1">
+                        <h4 id="preview-titulo" class="text-white font-bold text-lg"></h4>
+                        <p id="preview-descripcion" class="text-indigo-200 text-sm mt-1"></p>
+                        <div id="preview-sitio" class="flex items-center gap-2 mt-2 text-cyan-300 text-sm hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            <span>Enlace de sitio disponible</span>
+                        </div>
+                         <div id="preview-video" class="flex items-center gap-2 mt-2 text-red-300 text-sm hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                               <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <span>Enlace de video disponible</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+    <script>
+        // --- Firebase Configuration ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAxwORmBOjsBclIwJ1AqkehkHABHFrbPXg",
+            authDomain: "gamesogpc.firebaseapp.com",
+            databaseURL: "https://gamesogpc-default-rtdb.firebaseio.com",
+            projectId: "gamesogpc",
+            storageBucket: "gamesogpc.firebasestorage.app",
+            messagingSenderId: "1028354208272",
+            appId: "1:1028354208272:web:dca26d256cfd17925a5095",
+            measurementId: "G-TY0E9P2MPK"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // --- DOM Elements ---
+        const btnSubmit = document.getElementById('btn-submit');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const previewCard = document.getElementById('preview-card');
+
+        const tituloInput = document.getElementById('titulo');
+        const descripcionInput = document.getElementById('descripcion');
+        const enlaceSitioInput = document.getElementById('enlace_sitio');
+        const enlaceImagenInput = document.getElementById('enlace_imagen');
+        const enlaceVideoInput = document.getElementById('enlace_video');
+
+        // --- SVG Icons ---
+        const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+
+        // --- Live Preview Update ---
+        function updatePreview() {
+            const titulo = tituloInput.value.trim();
+            const descripcion = descripcionInput.value.trim();
+            const enlaceSitio = enlaceSitioInput.value.trim();
+            const enlaceVideo = enlaceVideoInput.value.trim();
+
+            if (titulo) {
+                if(previewCard.classList.contains('hidden')) {
+                    previewCard.classList.remove('hidden');
+                    previewCard.classList.add('animate-slideUp');
+                }
+                document.getElementById('preview-titulo').textContent = titulo;
+                document.getElementById('preview-descripcion').textContent = descripcion || 'Sin descripción';
+                
+                document.getElementById('preview-icon').innerHTML = defaultIcon;
+                
+                document.getElementById('preview-sitio').classList.toggle('hidden', !enlaceSitio);
+                document.getElementById('preview-video').classList.toggle('hidden', !enlaceVideo);
+
+            } else {
+                previewCard.classList.add('hidden');
+            }
+        }
+        
+        [tituloInput, descripcionInput, enlaceSitioInput, enlaceImagenInput, enlaceVideoInput].forEach(field => {
+            field.addEventListener('input', updatePreview);
+        });
+
+
+        // --- Firebase Database Logic ---
+        async function addToFirebase() {
+            try {
+                const dataRef = database.ref('Base/1/data');
+                
+                // 1. Leer los datos para obtener el siguiente ID
+                const snapshot = await dataRef.once('value');
+                const data = snapshot.val();
+                const nextId = data ? Object.keys(data).length : 0;
+
+                // 2. Crear el nuevo objeto con el ID secuencial
+                const nuevoItem = {
+                    id: String(nextId),
+                    titulo: tituloInput.value.trim(),
+                    descripcion: descripcionInput.value.trim(),
+                    enlace_sitio: enlaceSitioInput.value.trim(),
+                    enlace_imagen: enlaceImagenInput.value.trim(),
+                    enlace_video: enlaceVideoInput.value.trim(),
+                    timestamp: firebase.database.ServerValue.TIMESTAMP
+                };
+
+                // 3. Escribir el nuevo item en la ruta del nuevo ID
+                await database.ref('Base/1/data/' + nextId).set(nuevoItem);
+                
+                return true;
+
+            } catch (error) {
+                console.error('Error en la operación de Firebase:', error);
+                mostrarError(`Error: ${error.message}`);
+                return false;
+            }
+        }
+        
+        function mostrarError(mensaje) {
+            errorMessage.classList.remove('hidden');
+            errorText.textContent = mensaje;
+            errorMessage.classList.add('animate-shake');
+            setTimeout(() => {
+                errorMessage.classList.remove('animate-shake');
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        // --- Form Submission ---
+        btnSubmit.addEventListener('click', async () => {
+            let hasErrors = false;
+            
+            // Validar cada campo
+            ['titulo', 'descripcion', 'enlace_sitio', 'enlace_imagen', 'enlace_video'].forEach(id => {
+                const input = document.getElementById(id);
+                const errorEl = document.getElementById(`error-${id}`);
+                if (!input.value.trim()) { // All fields are now required
+                    input.classList.remove('border-white/30', 'focus:border-cyan-400');
+                    input.classList.add('border-red-400');
+                    errorEl.textContent = 'Este campo es requerido.';
+                    errorEl.classList.remove('hidden');
+                    errorEl.classList.add('animate-shake');
+                    hasErrors = true;
+                } else {
+                    input.classList.remove('border-red-400');
+                    input.classList.add('border-white/30', 'focus:border-cyan-400');
+                    errorEl.classList.add('hidden');
+                }
+            });
+
+            if (hasErrors) return;
+
+            // Mostrar estado de carga
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<svg class="animate-spin inline mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor"/></svg> Guardando en Base de Datos...`;
+            btnSubmit.className = 'w-full bg-gray-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg cursor-wait';
+
+            const success = await addToFirebase();
+
+            if (success) {
+                // Update success message text
+                document.querySelector('#success-message span').textContent = '¡Contenido agregado exitosamente!';
+                successMessage.classList.remove('hidden');
+                btnSubmit.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce inline mr-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> ¡Agregado con éxito!`;
+                btnSubmit.className = 'w-full bg-green-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg';
+
+                setTimeout(() => {
+                    [tituloInput, descripcionInput, enlaceSitioInput, enlaceImagenInput, enlaceVideoInput].forEach(i => i.value = '');
+                    updatePreview();
+                    
+                    successMessage.classList.add('hidden');
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = 'Agregar Contenido';
+                    btnSubmit.className = 'w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl';
+                }, 3000);
+
+            } else {
+                // Restaurar el botón en caso de error
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = 'Agregar Contenido';
+                btnSubmit.className = 'w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl';
+            }
+        });
+    </script>
+</body>
+</html>
+
