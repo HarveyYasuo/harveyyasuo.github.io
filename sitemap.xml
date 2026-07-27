@@ -1,39 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-<url>
-  <loc>https://www.juegospc.pro/index.html</loc>
-  <lastmod>2025-10-14</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.juegospc.pro/about.html</loc>
-  <lastmod>2025-10-14</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.juegospc.pro/contact.html</loc>
-  <lastmod>2025-10-14</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.juegospc.pro/privacy.html</loc>
-  <lastmod>2025-10-14</lastmod>
-  <changefreq>yearly</changefreq>
-  <priority>0.70</priority>
-</url>
-<url>
-  <loc>https://www.juegospc.pro/terms.html</loc>
-  <lastmod>2025-10-14</lastmod>
-  <changefreq>yearly</changefreq>
-  <priority>0.70</priority>
-</url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://harveyyasuo.github.io/</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://harveyyasuo.github.io/about.html</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://harveyyasuo.github.io/contact.html</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://harveyyasuo.github.io/privacy.html</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://harveyyasuo.github.io/terms.html</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
 </urlset>
