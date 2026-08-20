@@ -19,9 +19,19 @@
     </script>
 </head>
 <body>
+    <nav class="topbar">
+        <a href="#" class="topbar-brand">🎮 Harvey<span>Apps</span></a>
+        <div class="topbar-links">
+            <a href="#gamespc">GamesPC</a>
+            <a href="#roblox-joiner" class="topbar-highlight">Roblox Server Joiner</a>
+            <a href="#info">Características</a>
+            <a href="#navegacion">Navegación</a>
+            <a href="#legal">Legal</a>
+        </div>
+    </nav>
     <div id="canvas-container"></div>
     <main class="overlay">
-        <section class="hero-section">
+        <section class="hero-section" id="gamespc">
             <div class="hero-content">
                 <h1 class="hero-title">GAMES PC</h1>
                 <p class="hero-subtitle">Tu Biblioteca Definitiva de Juegos AAA Optimizados</p>
@@ -38,7 +48,47 @@
             </div>
         </section>
 
-        <section class="info-section">
+        <!-- ==========================================================
+             ROBLOX SERVER JOINER — Descarga
+             ========================================================== -->
+        <section id="roblox-joiner" class="product-section roblox-section">
+            <div class="product-container">
+                <div class="product-logo">
+                    <img src="assets/logo.png" alt="Logo de Roblox Server Joiner" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">🛠️ Herramienta para Windows · v1.0.0</span>
+                    <h2 class="product-title">Roblox Server Joiner</h2>
+                    <p class="product-subtitle">
+                        Entra al servidor de Roblox que quieras según la cantidad de jugadores:
+                        busca juegos por nombre con su miniatura, elige el más lleno o el más
+                        vacío y únete con un clic, reutilizando la sesión de tu app.
+                    </p>
+                    <ul class="product-features">
+                        <li>🎮 Búsqueda de juegos por nombre con su logo</li>
+                        <li>👥 Filtro por cantidad de jugadores</li>
+                        <li>⚡ Unión directa a un servidor concreto</li>
+                        <li>🔒 No guarda contraseñas ni cookies</li>
+                    </ul>
+                    <div class="product-actions">
+                        <!-- ⚠️ REEMPLAZA estas rutas por la URL real de descarga -->
+                        <a href="descargas/RobloxServerJoiner.exe" class="product-btn product-btn-primary" download>
+                            <span>⬇️</span> Descargar para Windows
+                        </a>
+                        <a href="descargas/RobloxServerJoiner-CodigoFuente.zip" class="product-btn product-btn-secondary" download>
+                            <span>📦</span> Código fuente
+                        </a>
+                    </div>
+                    <p class="product-note">
+                        Requiere la app de Roblox instalada y con sesión iniciada ·
+                        Software propietario © 2026 Carlos Harvey Rivas Mosquera ·
+                        Contacto: harvey.contact.games@gmail.com
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section" id="info">
             <h2 class="section-title">Características de la App</h2>
             <div class="info-grid">
                 <div class="info-card glass"><h3>📱 Interfaz Intuitiva</h3><p>Diseñada para la mejor experiencia en Android.</p></div>
@@ -46,7 +96,7 @@
                 <div class="info-card glass"><h3>📊 Información Detallada</h3><p>Cada juego incluye descripción, requisitos y tamaño.</p></div>
             </div>
         </section>
-<section class="site-nav">
+<section class="site-nav" id="navegacion">
             <h2 class="section-title">Navegación del Sitio</h2>
             <div class="nav-categories">
                 <div class="nav-category">
@@ -73,7 +123,7 @@
                 </div>
         </section>
 
-        <section class="legal-section">
+        <section class="legal-section" id="legal">
             <div class="legal-container">
                 <h2 class="section-title">⚠️ Aviso Legal</h2>
                 <div class="legal-grid">
@@ -101,6 +151,7 @@
 
         <footer>
             <div class="footer-links">
+                <a href="#roblox-joiner">Roblox Server Joiner</a>
                 <a href="about.html">Sobre Nosotros</a>
                 <a href="contact.html">Contacto</a>
                 <a href="privacy.html">Privacidad</a>

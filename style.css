@@ -1,10 +1,33 @@
+/* ==========================================================================
+   Harvey Apps — Hoja de estilos global
+   Proyectos: GamesPC (producción) + Roblox Server Joiner (nuevo)
+   ========================================================================== */
+
 :root {
-    --bg-color: #050505;
+    --bg-color: #05070b;
+    --bg-soft: #0a0e16;
     --text-color: #ffffff;
-    --accent-cyan: #00ffff;
-    --accent-cyan-dim: #00cccc;
+    --text-muted: #a9b2c3;
+
+    /* GamesPC (acento principal, cian) */
+    --accent-cyan: #00e5ff;
+    --accent-cyan-dim: #00b8d4;
+    --accent-blue: #2f80ff;
+
+    /* Roblox Server Joiner (acento secundario, rojo) */
+    --accent-red: #ff4b4b;
+    --accent-red-dim: #e2231a;
+
     --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(0, 255, 255, 0.2);
+    --glass-border: rgba(0, 229, 255, 0.22);
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --radius-lg: 24px;
+    --radius-md: 14px;
+    --shadow-cyan: 0 0 45px rgba(0, 229, 255, 0.35);
+    --shadow-red: 0 0 45px rgba(255, 75, 75, 0.35);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -13,12 +36,35 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+::selection {
+    background: rgba(0, 229, 255, 0.3);
+    color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #05070b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--accent-cyan), var(--accent-blue));
+    border-radius: 10px;
 }
 
 #canvas-container {
@@ -39,11 +85,81 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1rem;
+    padding: 5rem 1rem 2rem;
     gap: 2rem;
 }
 
-/* Hero Section */
+/* ==========================================================================
+   Barra de navegación superior
+   ========================================================================== */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.5rem;
+    background: rgba(5, 7, 11, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.topbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.topbar-brand span {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.topbar-links {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.topbar-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 0.9rem;
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.topbar-links a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.topbar-highlight {
+    color: var(--accent-red) !important;
+    border: 1px solid rgba(255, 75, 75, 0.5);
+}
+
+.topbar-highlight:hover {
+    background: rgba(255, 75, 75, 0.15) !important;
+}
+
+/* ==========================================================================
+   Hero (GamesPC)
+   ========================================================================== */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -64,19 +180,19 @@ body {
 .hero-title {
     font-size: 5rem;
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.05;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 50%, #00aaff 100%);
+    background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 50%, var(--accent-blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+    filter: drop-shadow(0 0 40px rgba(0, 229, 255, 0.35));
     letter-spacing: -2px;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: #ccc;
+    color: var(--text-muted);
     margin-bottom: 2rem;
     font-weight: 300;
 }
@@ -90,35 +206,36 @@ body {
 }
 
 .badge {
-    background: rgba(0, 255, 255, 0.1);
+    background: rgba(0, 229, 255, 0.1);
     border: 1px solid var(--accent-cyan);
     padding: 0.5rem 1rem;
     border-radius: 50px;
     font-size: 0.9rem;
     color: var(--accent-cyan);
     backdrop-filter: blur(5px);
+    font-weight: 600;
 }
 
 .cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(90deg, var(--accent-cyan), #00aaff);
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
     color: #000;
     padding: 1.2rem 3rem;
     border-radius: 50px;
     font-weight: 900;
     font-size: 1.2rem;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    transition: var(--transition);
+    box-shadow: var(--shadow-cyan);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .cta-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 50px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 70px rgba(0, 229, 255, 0.6);
 }
 
 .hero-disclaimer {
@@ -127,7 +244,181 @@ body {
     color: #666;
 }
 
-/* Games Section */
+/* ==========================================================================
+   Roblox Server Joiner — Sección de producto destacado
+   ========================================================================== */
+.product-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.roblox-section {
+    scroll-margin-top: 90px;
+}
+
+.product-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(145deg, rgba(255, 75, 75, 0.08), rgba(20, 10, 12, 0.6));
+    border: 1px solid rgba(255, 75, 75, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), var(--shadow-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-container::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(255, 75, 75, 0.25), transparent 65%);
+    pointer-events: none;
+}
+
+.product-logo {
+    flex-shrink: 0;
+}
+
+.product-logo img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 2px solid rgba(255, 75, 75, 0.5);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.product-content {
+    position: relative;
+    z-index: 1;
+}
+
+.product-tag {
+    display: inline-block;
+    background: rgba(255, 75, 75, 0.15);
+    color: var(--accent-red);
+    border: 1px solid rgba(255, 75, 75, 0.5);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.product-title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-red) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.product-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.product-features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+}
+
+.product-features li {
+    padding: 0.6rem 0.9rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #e6e9ef;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.product-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.product-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.product-btn-primary {
+    background: linear-gradient(90deg, var(--accent-red), var(--accent-red-dim));
+    color: #fff;
+    box-shadow: var(--shadow-red);
+    text-transform: uppercase;
+}
+
+.product-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 70px rgba(255, 75, 75, 0.65);
+}
+
+.product-btn-secondary {
+    background: transparent;
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    text-transform: uppercase;
+}
+
+.product-btn-secondary:hover {
+    background: rgba(255, 75, 75, 0.15);
+    transform: translateY(-3px);
+}
+
+.product-note {
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: #8b93a3;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Glass genérico (usado en tarjetas)
+   ========================================================================== */
+.glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ==========================================================================
+   Juegos (páginas internas de GamesPC)
+   ========================================================================== */
 .games-section {
     padding: 4rem 2rem;
     max-width: 1400px;
@@ -144,6 +435,7 @@ body {
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
+    letter-spacing: -1px;
 }
 
 .section-title::after {
@@ -154,6 +446,7 @@ body {
     width: 100%;
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    border-radius: 2px;
 }
 
 .games-grid {
@@ -167,7 +460,7 @@ body {
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
+    transition: var(--transition);
     position: relative;
     backdrop-filter: blur(10px);
 }
@@ -175,7 +468,7 @@ body {
 .game-card:hover {
     transform: translateY(-10px);
     border-color: var(--accent-cyan);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
 }
 
 .game-image {
@@ -243,11 +536,14 @@ body {
     font-weight: 600;
 }
 
-/* Legal Section */
+/* ==========================================================================
+   Sección legal
+   ========================================================================== */
 .legal-section {
     padding: 4rem 2rem;
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
+    scroll-margin-top: 90px;
 }
 
 .legal-container {
@@ -266,7 +562,7 @@ body {
     padding: 2rem;
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    transition: var(--transition);
     position: relative;
 }
 
@@ -283,7 +579,7 @@ body {
 }
 
 .legal-card p {
-    color: #ccc;
+    color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 0.8rem;
 }
@@ -297,7 +593,7 @@ body {
     padding: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
-    color: #ccc;
+    color: var(--text-muted);
 }
 
 .legal-card ul li::before {
@@ -318,7 +614,6 @@ body {
     border-left: 3px solid var(--accent-cyan);
 }
 
-/* Warning Card - Yellow */
 .warning-card {
     background: rgba(255, 215, 0, 0.05);
     border: 2px solid rgba(255, 215, 0, 0.4);
@@ -326,18 +621,10 @@ body {
 }
 
 @keyframes pulseYellow {
-
-    0%,
-    100% {
-        border-color: rgba(255, 215, 0, 0.3);
-    }
-
-    50% {
-        border-color: rgba(255, 215, 0, 0.7);
-    }
+    0%, 100% { border-color: rgba(255, 215, 0, 0.3); }
+    50% { border-color: rgba(255, 215, 0, 0.7); }
 }
 
-/* Danger Card - Orange */
 .danger-card {
     background: rgba(255, 107, 0, 0.05);
     border: 2px solid rgba(255, 107, 0, 0.4);
@@ -345,18 +632,10 @@ body {
 }
 
 @keyframes pulseOrange {
-
-    0%,
-    100% {
-        border-color: rgba(255, 107, 0, 0.3);
-    }
-
-    50% {
-        border-color: rgba(255, 107, 0, 0.7);
-    }
+    0%, 100% { border-color: rgba(255, 107, 0, 0.3); }
+    50% { border-color: rgba(255, 107, 0, 0.7); }
 }
 
-/* Critical Card - Red */
 .critical-card {
     background: rgba(255, 0, 0, 0.05);
     border: 2px solid rgba(255, 0, 0, 0.4);
@@ -364,21 +643,17 @@ body {
 }
 
 @keyframes pulseRed {
-
-    0%,
-    100% {
-        border-color: rgba(255, 0, 0, 0.3);
-    }
-
-    50% {
-        border-color: rgba(255, 0, 0, 0.7);
-    }
+    0%, 100% { border-color: rgba(255, 0, 0, 0.3); }
+    50% { border-color: rgba(255, 0, 0, 0.7); }
 }
 
-/* Info Section */
+/* ==========================================================================
+   Sección de información / características
+   ========================================================================== */
 .info-section {
     padding: 4rem 2rem;
     background: rgba(0, 0, 0, 0.3);
+    scroll-margin-top: 90px;
 }
 
 .info-grid {
@@ -395,12 +670,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: var(--transition);
 }
 
 .info-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 229, 255, 0.25);
 }
 
 .info-card h3 {
@@ -410,11 +686,13 @@ body {
 }
 
 .info-card p {
-    color: #aaa;
+    color: var(--text-muted);
     line-height: 1.6;
 }
 
-/* Secondary Apps */
+/* ==========================================================================
+   Aplicaciones secundarias
+   ========================================================================== */
 .secondary-apps {
     padding: 4rem 2rem;
     text-align: center;
@@ -444,9 +722,10 @@ body {
     color: var(--accent-cyan);
     text-decoration: none;
     border-radius: 50px;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     font-size: 0.9rem;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 .btn-sm:hover {
@@ -454,12 +733,15 @@ body {
     color: #000;
 }
 
-/* Site Navigation Section */
+/* ==========================================================================
+   Navegación del sitio
+   ========================================================================== */
 .site-nav {
     padding: 4rem 2rem;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    scroll-margin-top: 90px;
 }
 
 .nav-categories {
@@ -473,7 +755,7 @@ body {
     color: var(--accent-cyan);
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -494,14 +776,14 @@ body {
     border-radius: 12px;
     text-decoration: none;
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .nav-card:hover {
-    background: rgba(0, 255, 255, 0.08);
+    background: rgba(0, 229, 255, 0.08);
     border-color: var(--accent-cyan);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.1);
 }
 
 .nav-card-icon {
@@ -523,11 +805,13 @@ body {
     margin: 0;
 }
 
-/* Footer */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 footer {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #555;
+    color: #666;
     font-size: 0.9rem;
     text-align: center;
 }
@@ -542,7 +826,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Footer Links Grid */
 .footer-links {
     display: flex;
     flex-wrap: wrap;
@@ -550,20 +833,36 @@ footer a:hover {
     gap: 0.5rem 1.5rem;
     margin-bottom: 1rem;
 }
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Responsive */
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 @media (max-width: 768px) {
+    .topbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .topbar-links {
+        justify-content: center;
+    }
+
+    .overlay {
+        padding-top: 7rem;
+    }
+
     .hero-title {
         font-size: 3rem;
     }
@@ -572,11 +871,44 @@ footer a:hover {
         font-size: 1.1rem;
     }
 
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.25rem;
+        gap: 1.5rem;
+    }
+
+    .product-logo img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .product-actions {
+        justify-content: center;
+    }
+
+    .product-features {
+        grid-template-columns: 1fr;
+    }
+
+    .product-features li {
+        justify-content: center;
+    }
+
     .games-grid {
         grid-template-columns: 1fr;
     }
 
     .game-image {
         height: 300px;
+    }
+
+    .cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
     }
 }
